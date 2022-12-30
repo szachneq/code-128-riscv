@@ -201,7 +201,10 @@ print_loop:
 	jal draw_bar
 	j continue
 	space:
-	add s11, s11, a0
+	la s0, narrowest_bar_width
+	lbu s1, (s0)
+	mul s1, s1, a0
+	add s11, s11, s1
 	continue:
 
 	li a7, SYS_PRINT_INT
@@ -254,6 +257,9 @@ draw_bar:
 	
 	li t0, 1
 	mv t1, a0
+	la s0, narrowest_bar_width
+	lbu s1, (s0)
+	mul t1, t1, s1
 draw_bar_loop:
 	bgt t0, t1 end_draw_bar_loop
 	jal draw_line
