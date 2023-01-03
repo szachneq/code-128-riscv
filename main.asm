@@ -47,10 +47,10 @@ text_prompt: .asciz "Enter data to encode: "
 narrowest_bar_width: .byte 1
 
 num_values: .byte 1
-values: .byte MAX_NUM_VALUES
+values: .space MAX_NUM_VALUES
 error_parse: .asciz "Error: Invalid input"
 
-print_buffer: .byte 7
+print_buffer: .space 7
 
 	.text
 main:
